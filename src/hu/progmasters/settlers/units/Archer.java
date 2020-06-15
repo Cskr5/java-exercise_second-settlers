@@ -6,8 +6,8 @@ public class Archer extends Unit {
     private UnitType type = UnitType.ARCHER;
 
     public Archer(int health, int damage) {
-        this.health = health;
-        this.damage = damage;
+        this.health = Math.max(health, 0);
+        this.damage = damage <= 1 ? 10 : damage;
     }
 
     public Archer() {
