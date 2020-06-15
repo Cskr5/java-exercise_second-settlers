@@ -31,11 +31,9 @@ public class Archery extends Building {
         canProduce = true;
     }
 
-    public int getSteelQuantity() {
+    public int getGoldQuantity() {
         return gold.getQuantity();
     }
-
-
 
     public int getTurnsToProductUnit() {
         return turnsToProductUnit;
@@ -49,8 +47,7 @@ public class Archery extends Building {
         return archers;
     }
 
-    public Resource getGold() {
-        return gold;
+    public TypeOfResources getResourceType() {
+        return gold.getTypeOfResources();
     }
-
 }

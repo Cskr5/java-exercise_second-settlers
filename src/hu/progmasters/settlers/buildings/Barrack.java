@@ -47,7 +47,7 @@ public class Barrack extends Building {
         return swordsmen;
     }
 
-    public Resource getSteel() {
-        return steel;
+    public TypeOfResources getResourceType() {
+        return steel.getTypeOfResources();
     }
 }
