@@ -13,8 +13,8 @@ public class Archery extends Building {
     private int turnsToProductUnit = 3;
     private int turnsToProductGold = 2;
     private final static BuildingType type = BuildingType.ARCHERY;
-    private List<Unit> archers = new ArrayList<>();
-    private Resource gold = new Resource(TypeOfResources.GOLD);
+    private final List<Unit> archers = new ArrayList<>();
+    private final Resource gold = new Resource(TypeOfResources.GOLD);
 
     public void produceUnit() {
         if (canProduce) {

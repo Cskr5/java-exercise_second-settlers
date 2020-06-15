@@ -64,30 +64,28 @@ public class SettlersEngine {
         for (Building building : buildings) {
 
             if (building.isCanProduce()) {
-                building.decreaseTurnsLeftForProducing();
-                if (building.getTurnsToProductUnit() == 0) {
-                    building.setTurnsToProductUnit();
-                    building.produceUnit();
-
-                }
-                if (building.getTurnsToProductResource() == 0) {
-                    building.setTurnsToProductResource();
-                    building.produceResource();
-
-                }
-                building.increaseTurns();
-
+                produce(building);
             } else {
                 building.setCanProduce();
             }
         }
     }
 
+    private void produce(Building building) {
+        building.decreaseTurnsLeftForProducing();
+        if (building.getTurnsToProductUnit() == 0) {
+            building.setTurnsToProductUnit();
+            building.produceUnit();
+        }
+        if (building.getTurnsToProductResource() == 0) {
+            building.setTurnsToProductResource();
+            building.produceResource();
+        }
+        building.increaseTurns();
+    }
+
     private void printStatus() {
-        goldQuantity = 0;
-        steelQuantity = 0;
-        archerQuantity = 0;
-        swordsmanQuantity = 0;
+        resetQuantyties();
         String buildingInfo = "";
         for (Building building : buildings) {
             setResourceQuantity(building);
@@ -95,6 +93,13 @@ public class SettlersEngine {
             setUnitQuantity(building);
         }
         printAllInformation(buildingInfo);
+    }
+
+    private void resetQuantyties() {
+        goldQuantity = 0;
+        steelQuantity = 0;
+        archerQuantity = 0;
+        swordsmanQuantity = 0;
     }
 
     private void printAllInformation(String buildingInfo) {
@@ -139,13 +144,5 @@ public class SettlersEngine {
 
     public List<Building> getBuildings() {
         return buildings;
-    }
-
-    public List<Unit> getUnits() {
-        return units;
-    }
-
-    public List<Resource> getResources() {
-        return resources;
     }
 }

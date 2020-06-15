@@ -11,9 +11,9 @@ import java.util.List;
 public class Barrack extends Building {
     private int turnsToProductUnit = 4;
     private int turnsToProductSteel = 3;
-    private BuildingType type = BuildingType.BARRACK;
-    private List<Unit> swordsmen = new ArrayList<>();
-    private Resource steel = new Resource(TypeOfResources.STEEL);
+    private final static BuildingType type = BuildingType.BARRACK;
+    private final List<Unit> swordsmen = new ArrayList<>();
+    private final Resource steel = new Resource(TypeOfResources.STEEL);
 
     public void produceUnit() {
         if (canProduce) {
@@ -39,8 +39,6 @@ public class Barrack extends Building {
     public int getResourceQuantity() {
         return steel.getQuantity();
     }
-
-
 
     public int getTurnsToProductUnit() {
         return turnsToProductUnit;
@@ -70,11 +68,9 @@ public class Barrack extends Building {
         return swordsmen;
     }
 
-
-
     @Override
     public String toString() {
-        return "Barrack: "  + getTurnsCounter() + " turns (" +
+        return "Barracks: "  + getTurnsCounter() + " turns (" +
                 turnsToProductUnit + " turns until Barracks, " + turnsToProductSteel +
                 " turns until Steel)";
     }

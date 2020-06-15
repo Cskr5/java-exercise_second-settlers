@@ -42,7 +42,6 @@ public class BuildingTest {
         barracks.setCanProduce();
         barracks.produceUnit();
         Assertions.assertEquals(1,barracks.getUnits().size());
-
     }
 
     @Test

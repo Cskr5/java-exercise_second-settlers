@@ -8,7 +8,6 @@ import java.util.List;
 
 public abstract class Building {
     boolean canProduce;
-    boolean produceAllowedByEngine;
     private int turnsCounter;
     private int allowProductionCounter;
 
@@ -23,7 +22,6 @@ public abstract class Building {
     public abstract int getResourceQuantity();
     public abstract List<Unit> getUnits();
     public abstract BuildingType getBuildingType();
-
 
     public abstract void decreaseTurnsLeftForProducing();
 
