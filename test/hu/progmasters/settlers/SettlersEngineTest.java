@@ -13,8 +13,7 @@ package hu.progmasters.settlers;
 
 import hu.progmasters.settlers.buildings.Archery;
 import hu.progmasters.settlers.buildings.Barrack;
-import hu.progmasters.settlers.buildings.Building;
-import hu.progmasters.settlers.units.Unit;
+import hu.progmasters.settlers.resources.TypeOfResources;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -58,14 +57,29 @@ public class SettlersEngineTest {
 
     @Test
     public void test_archery_produceResource() {
+        Archery archery = new Archery();
+
+        archery.turnOnProduction();
+
+        archery.produceResource();
+        archery.produceResource();
+        archery.produceResource();
 
 
+        Assertions.assertEquals(15,archery.getGoldQuantity());
+        Assertions.assertEquals(TypeOfResources.GOLD,archery.getResourceType());
     }
 
     @Test
     public void test_barrack_produceResource() {
+        Barrack barrack = new Barrack();
 
+        barrack.turnOnProduction();
 
+        barrack.produceResource();
+
+        Assertions.assertEquals(10,barrack.getSteelQuantity());
+        Assertions.assertEquals(TypeOfResources.STEEL,barrack.getResourceType());
     }
 
 }
