@@ -31,7 +31,7 @@ public class Archer extends Unit {
         this.damage = damage;
     }
 
-    public UnitType getType() {
+    public UnitType getUnitType() {
         return type;
     }
 }
