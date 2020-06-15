@@ -3,6 +3,7 @@ package hu.progmasters.settlers.buildings;
 import hu.progmasters.settlers.resources.Resource;
 import hu.progmasters.settlers.resources.TypeOfResources;
 import hu.progmasters.settlers.units.Archer;
+import hu.progmasters.settlers.units.Unit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +12,8 @@ import java.util.List;
 public class Archery extends Building {
     private int turnsToProductUnit = 3;
     private int turnsToProductGold = 2;
-    private final BuildingType type = BuildingType.ARCHERY;
-    private List<Archer> archers = new ArrayList<>();
+    private final static BuildingType type = BuildingType.ARCHERY;
+    private List<Unit> archers = new ArrayList<>();
     private Resource gold = new Resource(TypeOfResources.GOLD);
 
     public void produceUnit() {
@@ -48,14 +49,6 @@ public class Archery extends Building {
         return turnsToProductGold;
     }
 
-    public List<Archer> getArchers() {
-        return archers;
-    }
-
-    public BuildingType getType() {
-        return type;
-    }
-
     public TypeOfResources getResourceType() {
         return gold.getTypeOfResources();
     }
@@ -66,5 +59,25 @@ public class Archery extends Building {
 
     public void setTurnsToProductResource() {
         turnsToProductGold = 2;
+    }
+
+    public BuildingType getBuildingType() {
+        return type;
+    }
+
+    public int getResourceQuantity() {
+        return gold.getQuantity();
+    }
+
+    public List<Unit> getUnits() {
+        return archers;
+    }
+
+    @Override
+    public String toString() {
+        return "Archery{" +
+                "turnsToProductUnit=" + turnsToProductUnit +
+                ", turnsToProductGold=" + turnsToProductGold +
+                '}';
     }
 }
