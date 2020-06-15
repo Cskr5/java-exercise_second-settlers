@@ -3,6 +3,7 @@ package hu.progmasters.settlers.buildings;
 import hu.progmasters.settlers.resources.Resource;
 import hu.progmasters.settlers.resources.TypeOfResources;
 import hu.progmasters.settlers.units.Swordsman;
+import hu.progmasters.settlers.units.Unit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ public class Barrack extends Building {
     private int turnsToProductUnit = 4;
     private int turnsToProductSteel = 3;
     private BuildingType type = BuildingType.BARRACK;
-    private List<Swordsman> swordsmen = new ArrayList<>();
+    private List<Unit> swordsmen = new ArrayList<>();
     private Resource steel = new Resource(TypeOfResources.STEEL);
 
     public void produceUnit() {
@@ -35,7 +36,7 @@ public class Barrack extends Building {
         turnsToProductUnit--;
     }
 
-    public int getSteelQuantity() {
+    public int getResourceQuantity() {
         return steel.getQuantity();
     }
 
@@ -49,12 +50,8 @@ public class Barrack extends Building {
         return turnsToProductSteel;
     }
 
-    public BuildingType getType() {
+    public BuildingType getBuildingType() {
         return type;
-    }
-
-    public List<Swordsman> getSwordsmen() {
-        return swordsmen;
     }
 
     public TypeOfResources getResourceType() {
@@ -69,4 +66,17 @@ public class Barrack extends Building {
         turnsToProductSteel = 3;
     }
 
+    public List<Unit> getUnits() {
+        return swordsmen;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Barrack{" +
+                "turnsToProductUnit=" + turnsToProductUnit +
+                ", turnsToProductSteel=" + turnsToProductSteel +
+                '}';
+    }
 }
