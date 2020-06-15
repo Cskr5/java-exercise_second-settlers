@@ -8,8 +8,8 @@ public class Swordsman extends Unit {
 
 
     public Swordsman(int health, int damage) {
-        this.health = health;
-        this.damage = damage;
+        this.health = Math.max(health, 0);
+        this.damage = damage <= 0 ? 10 : damage;
     }
 
     public Swordsman() {
