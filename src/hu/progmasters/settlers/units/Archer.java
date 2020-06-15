@@ -3,6 +3,7 @@ package hu.progmasters.settlers.units;
 public class Archer extends Unit {
     private int health;
     private int damage;
+    private UnitType type = UnitType.ARCHER;
 
     public Archer(int health, int damage) {
         this.health = health;
@@ -28,5 +29,9 @@ public class Archer extends Unit {
 
     public void setDamage(int damage) {
         this.damage = damage;
+    }
+
+    public UnitType getType() {
+        return type;
     }
 }

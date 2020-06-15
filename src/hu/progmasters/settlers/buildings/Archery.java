@@ -11,9 +11,9 @@ import java.util.List;
 public class Archery extends Building {
     private int turnsToProductUnit = 3;
     private int turnsToProductGold = 2;
+    private final BuildingType type = BuildingType.ARCHERY;
     private List<Archer> archers = new ArrayList<>();
     private Resource gold = new Resource(TypeOfResources.GOLD);
-    protected boolean canProduce = false;
 
     public void produceUnit() {
         if (canProduce) {
@@ -25,6 +25,11 @@ public class Archery extends Building {
         if (canProduce) {
             gold.setQuantity(gold.getQuantity() + 5);
         }
+    }
+
+    public void decreaseTurnsLeftForProducing() {
+        turnsToProductGold--;
+        turnsToProductUnit--;
     }
 
     public void turnOnProduction() {
@@ -39,7 +44,7 @@ public class Archery extends Building {
         return turnsToProductUnit;
     }
 
-    public int getTurnsToProductGold() {
+    public int getTurnsToProductResource() {
         return turnsToProductGold;
     }
 
@@ -47,7 +52,19 @@ public class Archery extends Building {
         return archers;
     }
 
+    public BuildingType getType() {
+        return type;
+    }
+
     public TypeOfResources getResourceType() {
         return gold.getTypeOfResources();
+    }
+
+    public void setTurnsToProductUnit() {
+        turnsToProductUnit = 3;
+    }
+
+    public void setTurnsToProductResource() {
+        turnsToProductGold = 2;
     }
 }

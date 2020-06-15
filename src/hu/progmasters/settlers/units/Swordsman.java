@@ -4,6 +4,8 @@ public class Swordsman extends Unit {
 
     private int health;
     private int damage;
+    private UnitType type = UnitType.SWORDSMAN;
+
 
     public Swordsman(int health, int damage) {
         this.health = health;
@@ -29,5 +31,9 @@ public class Swordsman extends Unit {
 
     public void setDamage(int damage) {
         this.damage = damage;
+    }
+
+    public UnitType getType() {
+        return type;
     }
 }

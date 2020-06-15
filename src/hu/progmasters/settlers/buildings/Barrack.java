@@ -10,19 +10,18 @@ import java.util.List;
 public class Barrack extends Building {
     private int turnsToProductUnit = 4;
     private int turnsToProductSteel = 3;
+    private BuildingType type = BuildingType.BARRACK;
     private List<Swordsman> swordsmen = new ArrayList<>();
     private Resource steel = new Resource(TypeOfResources.STEEL);
-    protected boolean canProduce = false;
-
 
     public void produceUnit() {
-        if(canProduce ) {
+        if (canProduce) {
             swordsmen.add(new Swordsman());
         }
     }
 
     public void produceResource() {
-        if(canProduce) {
+        if (canProduce) {
             steel.setQuantity(steel.getQuantity() + 10);
         }
     }
@@ -31,16 +30,27 @@ public class Barrack extends Building {
         canProduce = true;
     }
 
+    public void decreaseTurnsLeftForProducing() {
+        turnsToProductSteel--;
+        turnsToProductUnit--;
+    }
+
     public int getSteelQuantity() {
         return steel.getQuantity();
     }
+
+
 
     public int getTurnsToProductUnit() {
         return turnsToProductUnit;
     }
 
-    public int getTurnsToProductSteel() {
+    public int getTurnsToProductResource() {
         return turnsToProductSteel;
+    }
+
+    public BuildingType getType() {
+        return type;
     }
 
     public List<Swordsman> getSwordsmen() {
@@ -50,4 +60,13 @@ public class Barrack extends Building {
     public TypeOfResources getResourceType() {
         return steel.getTypeOfResources();
     }
+
+    public void setTurnsToProductUnit() {
+        turnsToProductUnit = 4;
+    }
+
+    public void setTurnsToProductResource() {
+        turnsToProductSteel = 3;
+    }
+
 }
