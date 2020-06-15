@@ -75,9 +75,8 @@ public class Archery extends Building {
 
     @Override
     public String toString() {
-        return "Archery{"  + "turns:" + getTurnsCounter() +
-                ", turnsToProductUnit:" + turnsToProductUnit +
-                ", turnsToProductGold:" + turnsToProductGold +
-                '}';
+        return "Archery: "  + getTurnsCounter() + " turns (" +
+                 turnsToProductUnit + " turns until Archer, " + turnsToProductGold +
+                " turns until Gold)";
     }
 }
