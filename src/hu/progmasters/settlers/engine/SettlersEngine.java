@@ -112,8 +112,8 @@ public class SettlersEngine {
         if (archerQuantity + swordsmanQuantity == 0) {
             System.out.println("N/A");
         } else {
-            if (swordsmanQuantity != 0) System.out.println("Archers: " + archerQuantity);
-            if (archerQuantity != 0) System.out.println("Swordsman: " + swordsmanQuantity);
+            if (swordsmanQuantity != 0) System.out.println("Archers: " + swordsmanQuantity);
+            if (archerQuantity != 0) System.out.println("Swordsman: " + archerQuantity);
         }
     }
 
