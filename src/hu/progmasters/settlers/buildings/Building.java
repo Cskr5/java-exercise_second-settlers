@@ -35,14 +35,6 @@ public abstract class Building {
         allowProductionCounter++;
     }
 
-    public  void setProduceAllowedByEngine() {
-
-    }
-
-    public boolean isProduceAllowedByEngine() {
-        return produceAllowedByEngine;
-    }
-
     public boolean isCanProduce() {
         return canProduce;
     }
