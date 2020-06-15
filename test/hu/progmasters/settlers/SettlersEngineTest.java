@@ -36,7 +36,7 @@ public class SettlersEngineTest {
         archery.produceUnit();
         archery.produceUnit();
 
-        Assertions.assertEquals(3,archery.getArchers().size());
+        Assertions.assertEquals(3,archery.getUnits().size());
     }
 
     @Test
@@ -52,7 +52,7 @@ public class SettlersEngineTest {
         barrack.produceUnit();
         barrack.produceUnit();
 
-        Assertions.assertEquals(5,barrack.getSwordsmen().size());
+        Assertions.assertEquals(5,barrack.getUnits().size());
     }
 
     @Test
@@ -78,7 +78,7 @@ public class SettlersEngineTest {
 
         barrack.produceResource();
 
-        Assertions.assertEquals(10,barrack.getSteelQuantity());
+        Assertions.assertEquals(10,barrack.getResourceQuantity());
         Assertions.assertEquals(TypeOfResources.STEEL,barrack.getResourceType());
     }
 
