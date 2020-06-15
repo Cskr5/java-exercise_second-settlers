@@ -18,8 +18,6 @@ import hu.progmasters.settlers.buildings.BuildingType;
 import hu.progmasters.settlers.resources.Resource;
 import hu.progmasters.settlers.resources.TypeOfResources;
 import hu.progmasters.settlers.units.Unit;
-import hu.progmasters.settlers.units.UnitType;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +30,6 @@ public class SettlersEngine {
     private int steelQuantity;
     private int archerQuantity;
     private int swordsmanQuantity;
-
 
     public void build(String typeOfBuilding) {
         BuildingType buildingType = convertStringToEnum(typeOfBuilding);
@@ -69,10 +66,10 @@ public class SettlersEngine {
                 if(building.getTurnsToProductUnit() == 0) {
                     building.produceUnit();
                     building.setTurnsToProductUnit();
-
                 }
                 if(building.getTurnsToProductResource() == 0) {
                     building.produceResource();
+                    building.setTurnsToProductResource();
                 }
                 building.increaseTurns();
                 building.decreaseTurnsLeftForProducing();
@@ -108,10 +105,10 @@ public class SettlersEngine {
     }
 
     private void setUnitQuantity(Building building) {
-        if(building.getUnits().get(0).getUnitType().equals(UnitType.ARCHER)) {
-            archerQuantity += building.getResourceQuantity();
-        } else if (building.getUnits().get(0).getUnitType().equals(UnitType.SWORDSMAN)) {
-            swordsmanQuantity += building.getResourceQuantity();
+        if(building.getBuildingType().equals(BuildingType.ARCHERY)) {
+            archerQuantity += building.getUnits().size();
+        } else if (building.getBuildingType().equals(BuildingType.BARRACK)) {
+            swordsmanQuantity += building.getUnits().size();
         }
     }
 
