@@ -1,7 +1,7 @@
 package hu.progmasters.settlers.buildings;
 
 public enum BuildingType {
-    ARCHERY("archery"),BARRACK("barrack");
+    ARCHERY("archery"),BARRACK("barracks");
 
     private final String stringValue;
 

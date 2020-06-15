@@ -57,22 +57,25 @@ public class SettlersEngine {
     public void status() {
         buildingHandler();
         printStatus();
-
     }
 
     private void buildingHandler() {
         for (Building building : buildings) {
+
             if(building.isCanProduce()) {
+                building.decreaseTurnsLeftForProducing();
                 if(building.getTurnsToProductUnit() == 0) {
-                    building.produceUnit();
                     building.setTurnsToProductUnit();
+                    building.produceUnit();
+
                 }
                 if(building.getTurnsToProductResource() == 0) {
-                    building.produceResource();
                     building.setTurnsToProductResource();
+                    building.produceResource();
+
                 }
                 building.increaseTurns();
-                building.decreaseTurnsLeftForProducing();
+
             } else {
                 building.setCanProduce();
             }

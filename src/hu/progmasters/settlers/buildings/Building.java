@@ -1,7 +1,6 @@
 package hu.progmasters.settlers.buildings;
 
 import hu.progmasters.settlers.resources.TypeOfResources;
-import hu.progmasters.settlers.units.Swordsman;
 import hu.progmasters.settlers.units.Unit;
 
 import java.util.List;
@@ -11,6 +10,7 @@ public abstract class Building {
     boolean canProduce;
     boolean produceAllowedByEngine;
     private int turnsCounter;
+    private int allowProductionCounter;
 
     public abstract void produceUnit();
     public abstract void produceResource() ;
@@ -28,11 +28,15 @@ public abstract class Building {
     public abstract void decreaseTurnsLeftForProducing();
 
     public  void setCanProduce() {
-        canProduce = true;
+        if(allowProductionCounter == 1) {
+            canProduce = true;
+            allowProductionCounter = 0;
+        }
+        allowProductionCounter++;
     }
 
     public  void setProduceAllowedByEngine() {
-        canProduce = true;
+
     }
 
     public boolean isProduceAllowedByEngine() {

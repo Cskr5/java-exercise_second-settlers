@@ -74,9 +74,9 @@ public class Barrack extends Building {
 
     @Override
     public String toString() {
-        return "Barrack{" +
-                "turnsToProductUnit=" + turnsToProductUnit +
-                ", turnsToProductSteel=" + turnsToProductSteel +
+        return "Barrack{" + "turns:" + getTurnsCounter() +
+                ", turnsToProductUnit:" + turnsToProductUnit +
+                ", turnsToProductSteel:" + turnsToProductSteel +
                 '}';
     }
 }
