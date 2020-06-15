@@ -16,7 +16,9 @@ import hu.progmasters.settlers.buildings.Barrack;
 import hu.progmasters.settlers.buildings.Building;
 import hu.progmasters.settlers.buildings.BuildingType;
 import hu.progmasters.settlers.resources.Resource;
+import hu.progmasters.settlers.resources.TypeOfResources;
 import hu.progmasters.settlers.units.Unit;
+import hu.progmasters.settlers.units.UnitType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +28,13 @@ public class SettlersEngine {
     private List<Building> buildings = new ArrayList<>();
     private List<Unit> units = new ArrayList<>();
     private List<Resource> resources = new ArrayList<>();
-    private int turnsCounter;
+    private int goldQuantity;
+    private int steelQuantity;
+    private int archerQuantity;
+    private int swordsmanQuantity;
+
 
     public void build(String typeOfBuilding) {
-        turnsCounter++;
         BuildingType buildingType = convertStringToEnum(typeOfBuilding);
         if(buildingType != null) {
             switch (buildingType) {
@@ -45,28 +50,68 @@ public class SettlersEngine {
         } else {
             System.out.println("No such a building");
         }
+        buildingHandler();
     }
 
     public void skip() {
-        turnsCounter++;
-
+        buildingHandler();
     }
 
     public void status() {
-        turnsCounter++;
+        buildingHandler();
+        printStatus();
+
+    }
+
+    private void buildingHandler() {
         for (Building building : buildings) {
             if(building.isCanProduce()) {
                 if(building.getTurnsToProductUnit() == 0) {
                     building.produceUnit();
                     building.setTurnsToProductUnit();
+
                 }
                 if(building.getTurnsToProductResource() == 0) {
                     building.produceResource();
                 }
+                building.increaseTurns();
                 building.decreaseTurnsLeftForProducing();
             } else {
                 building.setCanProduce();
             }
+        }
+    }
+
+    private void printStatus() {
+        goldQuantity = 0;
+        steelQuantity = 0;
+        archerQuantity = 0;
+        swordsmanQuantity = 0;
+        for (Building building : buildings) {
+            setResourceQuantity(building);
+            System.out.println(building);
+            setUnitQuantity(building);
+        }
+
+        System.out.println("Gold: " + goldQuantity);
+        System.out.println("Steel: " + steelQuantity);
+        System.out.println("Archers: " + archerQuantity);
+        System.out.println("Swordsman: " + swordsmanQuantity);
+    }
+
+    private void setResourceQuantity(Building building) {
+        if(building.getResourceType().equals(TypeOfResources.GOLD)) {
+            goldQuantity += building.getResourceQuantity();
+        } else if (building.getResourceType().equals(TypeOfResources.STEEL)) {
+            steelQuantity += building.getResourceQuantity();
+        }
+    }
+
+    private void setUnitQuantity(Building building) {
+        if(building.getUnits().get(0).getUnitType().equals(UnitType.ARCHER)) {
+            archerQuantity += building.getResourceQuantity();
+        } else if (building.getUnits().get(0).getUnitType().equals(UnitType.SWORDSMAN)) {
+            swordsmanQuantity += building.getResourceQuantity();
         }
     }
 
