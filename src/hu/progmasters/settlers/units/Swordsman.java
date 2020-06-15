@@ -33,7 +33,9 @@ public class Swordsman extends Unit {
         this.damage = damage;
     }
 
-    public UnitType getType() {
+    public UnitType getUnitType() {
         return type;
     }
+
+
 }
